@@ -1,0 +1,162 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{matlab-prettifier}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\tcbuselibrary{listings,skins,breakable,xparse}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0.9pt}%横线的宽度
+%\thispagestyle{empty}
+
+\rhead{Page xx of xx}
+%\lhead{#Teamxxxxx}
+
+\cfoot{}
+
+
+\tcbset{%
+	mylist/.style = {%
+		colframe = black,
+		colback = white,
+		coltitle = red!50!yellow!3!white,
+		colbacktitle = white,
+		listing only,
+		attach boxed title to top center = {yshift = -\tcboxedtitleheight/10},
+		enhanced,
+		drop fuzzy shadow, % shadow around listings
+		left = 6.5mm, % distance between left rule and line number 
+		breakable, % enable listing box to break by page
+		enhanced jigsaw, % box not being closed when broken by page
+		fonttitle=\'12pts'\sffamily\color{black}, % customise font of listing title
+		before skip=20pt plus 2pt, % vertical space between listings and text
+		after skip=20pt plus 2pt,
+	},
+	example/.style 2 args = {
+		mylist,
+		title = {Listing  #1},
+		label = {#2},
+	},
+}
+
+
+\newtcblisting[auto counter, number within = section, list inside = mcode]{matlab}[6][]{%
+	listing options = {%
+		style = Matlab-editor,
+		numbers = left,
+		numberstyle = \footnotesize\color{black}
+	},
+	overlay = {\begin{tcbclipinterior}\fill[blue!5!white] (frame.south west) rectangle ([xshift=5.3mm]frame.north west);\end{tcbclipinterior}},
+	example = {#2}{#3}, #1,
+}
+
+
+\newtcblisting[auto counter, number within = section, list inside = mcode]{C++}[6][]{%
+	listing options = {%
+		style = Matlab-editor,
+		numbers = left,
+		numberstyle = \footnotesize\color{black}
+	},
+	overlay = {\begin{tcbclipinterior}\fill[blue!5!white] (frame.south west) rectangle ([xshift=5.3mm]frame.north west);\end{tcbclipinterior}},
+	example = {#2}{#3}, #1,
+}
+
+
+\newtcblisting[auto counter, number within = section, list inside = mcode]{python}[6][]{%
+	listing options = {%
+		style = Matlab-editor,
+		numbers = left,
+		numberstyle = \footnotesize\color{black}
+	},
+	overlay = {\begin{tcbclipinterior}\fill[blue!5!white] (frame.south west) rectangle ([xshift=5.3mm]frame.north west);\end{tcbclipinterior}},
+	example = {#2}{#3}, #1,
+}
+
+
+\begin{document}
+
+	
+	
+
+	\section{The Matlab Code}
+	
+	\begin{matlab}{My First Code}{code:label}
+	
+	
+	
+y=ymax./(1+((ymax-y0)/y0)*exp((-k)*(t-2017)));
+hold on
+plot(t,x,'r-')
+plot(t,y,'b--')
+figure_FontSize=12;
+set(get(gca,'XLabel'),'FontSize',figure_FontSize,'Vertical','top');
+set(get(gca,'YLabel'),'FontSize',figure_FontSize,'Vertical','middle');
+set(findobj('FontSize',12),'FontSize',figure_FontSize);
+set(gca,'Position',[.13 .17 .80 .74]);
+set(findobj(get(gca,'Children'),'LineWidth',0.25),'LineWidth',2);
+set(gca, 'Fontname', 'Times newman', 'Fontsize', 12);
+xlabel('years');
+ylabel('percentage');
+legend('EV Cars','Chargers')
+	
+\end{matlab}
+
+
+\section{The Matlab Code Plus}
+
+\begin{matlab}{My Second Code}{code:label}
+
+
+
+
+y=ymax./(1+((ymax-y0)/y0)*exp((-k)*(t-2017)));
+hold on
+plot(t,x,'r-')
+plot(t,y,'b--')
+figure_FontSize=12;
+set(get(gca,'XLabel'),'FontSize',figure_FontSize,'Vertical','top');
+set(get(gca,'YLabel'),'FontSize',figure_FontSize,'Vertical','middle');
+set(findobj('FontSize',12),'FontSize',figure_FontSize);
+set(gca,'Position',[.13 .17 .80 .74]);
+set(findobj(get(gca,'Children'),'LineWidth',0.25),'LineWidth',2);
+set(gca, 'Fontname', 'Times newman', 'Fontsize', 12);
+xlabel('years');
+ylabel('percentage');
+legend('EV Cars','Chargers')
+	
+\end{matlab}
+
+	\section{The C++ Code}
+
+\begin{C++}{My Third Code}{code:label}
+	
+	
+#include"iostream"
+
+using namespace std;
+
+int main()
+{
+  cout << "Hello World" <<endl;%I love you
+  return 0;
+}	
+	
+
+	
+\end{C++}
+
+\section{The Python Code}
+\begin{python}{My Third Code}{code:label}
+	
+	
+	
+import this
+for 
+	
+	
+\end{python}
+
+
+	
+\end{document}
